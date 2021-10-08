@@ -80,6 +80,7 @@ minuteJokeButton.addEventListener('click', (event) =>
 */
 
 const table = document.querySelector('table')
+userFacade.getAllUsers(table)
 
 /*
 getAllUsers()

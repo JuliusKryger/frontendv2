@@ -11,7 +11,7 @@ function getPersonById(id) {
 }
 
 function getAllUsers(domElement) {
-    fetch(URL + '/all')
+    fetch("https://www.test.juliusmadsen.dk/devops-starter/api/person/all")
         .then(function (response) {
             return response.json();
         })
