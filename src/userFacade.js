@@ -11,12 +11,17 @@ function getPersonById(id) {
 }
 
 function getAllUsers(domElement) {
-    return fetch(URL + "/all")
-        .then(function (res) {
-            return res.text();
+    fetch(URL + '/all')
+        .then(function (response) {
+            return response.json();
         })
         .then(function (data) {
-            domElement.innerHTML = data
+            const all = data.all
+            console.log(all)
+            for (let obj of all) {
+                let tr = domElement.insertRow()
+                tr.insertCell().textContent = obj.email
+            }r
         })
 }
 

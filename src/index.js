@@ -79,60 +79,23 @@ minuteJokeButton.addEventListener('click', (event) =>
     deletePersonById
 */
 
+const table = document.querySelector('table')
+
+/*
 getAllUsers()
 document.getElementById("findUserButton").addEventListener('click', event => getPersonById())
 document.getElementById("addUserButton").addEventListener('click', event => createPerson())
 document.getElementById("editUserButton").addEventListener('click', event => updatePerson())
 document.getElementById("deleteUserButton").addEventListener('click', event => deletePersonById())
 
+
 function getAllUsers()
 {
   userFacade.getAllUsers().then(users => showAllUsers(users))
 }
 
-const p1 = document.getElementById('p1')
-userFacade.getAllUsers(p1)
-
-
-function showAllUsers(users)
-{
-
-/*
-{
-  "all": [  
-    {
-      "id": 1,
-      "firstName": "Ole",
-      "lastName": "Srensen",
-      "email": "oleelskerhunde@gmail.com",
-      "phones": [
-        {
-          "number": 12345678
-        }
-      ],
-      "hobbies": [
-        {
-          "id": 1,
-          "name": "golf",
-          "wikiLink": "www.golf.dk",
-          "category": "ballplay",
-          "type": "ooutdoors"
-        }
-      ],
-      "address": {
-        "street": "Satsvej",
-        "additionalInfo": "1 th.",
-        "cityInfo": {
-          "zipCode": "2850",
-          "city": "Nrum"
-        }
-      }
-    }
-  ]
-}
-*/
-
-
+function showAllUsers(users) {
+  console.log(users)
   const usersToHtml = users.map(user => `
       <tr>
         <td>${user.id}</td>
@@ -159,6 +122,7 @@ function getPersonById()
     })
     .catch(err => errorHandling(err))
 }
+*/
 
 function createPerson()
 {
@@ -195,6 +159,7 @@ function updatePerson()
     gender: document.getElementById("editUserGenderText").value,
     email: document.getElementById("editUserEmailText").value 
   }
+
   userFacade.updatePerson(newUser, document.getElementById("editUserIdText").value)
     .then(user =>
     {
