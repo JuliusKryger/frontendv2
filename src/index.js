@@ -1,9 +1,8 @@
 import "./style.css"
 import "bootstrap/dist/css/bootstrap.css"
-import 'bootstrap';
+import * as bootstrap from 'bootstrap';
+import '@popperjs/core';
 import $ from 'jquery';
-
-
 
 import "./jokeFacade"
 import userFacade from "./userFacade"
@@ -125,31 +124,62 @@ function getPersonById()
 }
 */
 
-function createPerson()
-{
-  const newUser = {
-    age: document.getElementById("addUserAgeText").value,
-    name: document.getElementById("addUserNameText").value,
-    gender: document.getElementById("addUserGenderText").value,
-    email: document.getElementById("addUserEmailText").value
+document.getElementById("savebtn").addEventListener('click', function () {
+  const email = document.getElementById("personEmail").value;
+  const firstName = document.getElementById("personFirstName").value;
+  const lastName = document.getElementById("personLastName").value;
+  const street = document.getElementById("addressStreet").value;
+  const zipCode = document.getElementById("addressZip").value;
+  const city = document.getElementById("addressCity").value;
+  const number = document.getElementById("personPhone").value;
+  const name = document.getElementById("personHobby").value;
+  const category = document.getElementById("personHobbyCat").value;
+  const type = document.getElementById("personHobbyType").value;
+  const wikiLink = document.getElementById("personHobbyWiki").value;
+
+  const hobby = {
+      "name": name,
+      "category": category,
+      "type": type,
+      "wikiLink": wikiLink,
   }
 
-  userFacade.createPerson(newUser)
-    .then(user =>
-    {
-      document.getElementById("addUserResult").innerHTML = `
-      <h5 style="margin-top:20px">We added a user successfully!</h5>  
-      <table>
-          <tr><td>Id:</td><td>${user.id}</td></tr>
-          <tr><td>Age: </td><td>${user.age}</td></tr>
-          <tr><td>Name: </td><td>${user.name}</td></tr>
-          <tr><td>Gender: </td><td>${user.gender}</td></tr>
-          <tr><td>Email:</td><td>${user.email}</td></tr>
-        </table>`
-      getAllUsers();
-    })
-    .catch(err => errorHandling(err))
-}
+  const hobbies = [
+      hobby
+  ]
+
+  const phone = {
+      "number": number
+  }
+
+  const phones = [
+      phone
+  ]
+
+  const cityInfo = {
+      "zipCode": zipCode,
+      "city": city
+  }
+
+  const address = {
+      "street": street,
+      "additionalInfo": "",
+      "cityInfo": cityInfo
+  }
+
+  const person = {
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email,
+      "hobbies": hobbies,
+      "phones": phones,
+      "address": address,
+  }
+
+  console.log(person);
+  console.log(JSON.stringify(person));
+
+  userFacade.createPerson(person)
 
 function updatePerson()
 {
@@ -241,6 +271,4 @@ function menuItemClicked(evt)
 }
 document.getElementById("menu").onclick = menuItemClicked;
 hideAllShowOne("about_html");
-
-
-
+})

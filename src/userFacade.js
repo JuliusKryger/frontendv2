@@ -20,8 +20,16 @@ function getAllUsers(domElement) {
             console.log(all)
             for (let obj of all) {
                 let tr = domElement.insertRow()
+                tr.insertCell().textContent = obj.id
+                tr.insertCell().textContent = obj.firstName
+                tr.insertCell().textContent = obj.lastName
                 tr.insertCell().textContent = obj.email
-            }r
+                tr.insertCell().textContent = obj.hobbies[0].name
+                tr.insertCell().textContent = obj.phones[0].number
+                tr.insertCell().textContent = obj.address.street
+                tr.insertCell().textContent = obj.address.cityInfo.city
+                tr.insertCell().textContent = obj.address.cityInfo.zipCode
+            }
         })
 }
 
